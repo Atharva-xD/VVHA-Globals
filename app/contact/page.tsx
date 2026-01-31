@@ -57,7 +57,7 @@ export default function Contact() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl md:text-2xl lg:text-3xl leading-relaxed text-gray-600 font-light max-w-3xl"
             >
-              Let's talk about your business, your goals, and how we can help you
+              Let&apos;s talk about your business, your goals, and how we can help you
               achieve them. No pitch. No pressure. Just a conversation.
             </motion.p>
           </ScrollReveal>
@@ -85,7 +85,7 @@ export default function Contact() {
                     htmlFor="name"
                     className="block text-2xl md:text-3xl font-bold mb-6 tracking-tight"
                   >
-                    What's your name?
+                    What&apos;s your name?
                   </motion.label>
                   <motion.input
                     whileFocus={{ scale: 1.02 }}
@@ -185,7 +185,7 @@ export default function Contact() {
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="text-xl md:text-2xl leading-relaxed text-gray-600 font-light mb-8"
                 >
-                  We've received your message and will get back to you within 24
+                  We&apos;ve received your message and will get back to you within 24
                   hours.
                 </motion.p>
                 <motion.button

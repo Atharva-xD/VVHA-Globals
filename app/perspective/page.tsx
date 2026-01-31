@@ -24,7 +24,7 @@ export default function Perspective() {
               <br />
               <span className="text-red-600">digital transformation</span>
               <br />
-              shouldn't feel
+              shouldn&apos;t feel
               <br />
               like a compromise.
             </motion.h1>
@@ -55,7 +55,7 @@ export default function Perspective() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-lg md:text-xl leading-relaxed text-white/80 font-light"
               >
-                Most agencies choose one: either they're strategic but boring, or
+                Most agencies choose one: either they&apos;re strategic but boring, or
                 creative but unreliable. We refuse that choice.
               </motion.p>
             </div>
@@ -84,7 +84,7 @@ export default function Perspective() {
                 className="text-lg md:text-xl leading-relaxed text-gray-700 font-light"
               >
                 Every solution we build is tailor-made because every business
-                operates differently. We don't believe in templates. We believe
+                operates differently. We don&apos;t believe in templates. We believe
                 in understanding your context, your constraints, and your
                 ambitions.
               </motion.p>
@@ -135,7 +135,7 @@ export default function Perspective() {
                 </h3>
                 <p className="text-lg leading-relaxed text-white/70 font-light">
                   We build for scale, not for launch. Every decision we make
-                  considers where you'll be in three years, not just where you
+                  considers where you&apos;ll be in three years, not just where you
                   are today.
                 </p>
               </motion.div>
@@ -152,7 +152,7 @@ export default function Perspective() {
                   Strategic creativity
                 </h3>
                 <p className="text-lg leading-relaxed text-white/70 font-light">
-                  Beautiful design means nothing if it doesn't serve your
+                  Beautiful design means nothing if it doesn&apos;t serve your
                   business goals. We merge aesthetic excellence with strategic
                   rigor.
                 </p>
@@ -170,7 +170,7 @@ export default function Perspective() {
                   Partnership, not projects
                 </h3>
                 <p className="text-lg leading-relaxed text-white/70 font-light">
-                  We're not here to deliver and disappear. We're here to
+                  We&apos;re not here to deliver and disappear. We&apos;re here to
                   understand your business deeply and grow with you.
                 </p>
               </motion.div>
@@ -188,7 +188,7 @@ export default function Perspective() {
                 </h3>
                 <p className="text-lg leading-relaxed text-white/70 font-light">
                   We choose technology based on what solves your problem best,
-                  not what's trending. Pragmatic innovation over shiny objects.
+                  not what&apos;s trending. Pragmatic innovation over shiny objects.
                 </p>
               </motion.div>
             </ScrollReveal>

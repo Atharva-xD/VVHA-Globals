@@ -85,7 +85,7 @@ export default function HowWeBuild() {
             >
               Not a linear process. Not a rigid methodology. A set of principles
               that guide how we work, and phases that overlap because real work
-              doesn't happen in silos.
+              doesn&apos;t happen in silos.
             </motion.p>
           </ScrollReveal>
         </div>

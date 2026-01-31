@@ -269,9 +269,9 @@ export default function Capabilities() {
               transition={{ duration: 1 }}
               className="text-2xl md:text-3xl lg:text-4xl leading-relaxed font-light"
             >
-              These aren't services we offer.
+              These aren&apos;t services we offer.
               <br />
-              <span className="text-red-600">They're disciplines we master.</span>
+              <span className="text-red-600">They&apos;re disciplines we master.</span>
             </motion.p>
           </ScrollReveal>
         </div>

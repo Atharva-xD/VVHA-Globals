@@ -182,7 +182,7 @@ export default function Work() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-lg md:text-xl text-white/60 font-light"
             >
-              Let's discuss your project.
+              Let&apos;s discuss your project.
             </motion.div>
           </ScrollReveal>
         </div>
