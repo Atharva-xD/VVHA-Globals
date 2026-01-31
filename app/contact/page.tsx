@@ -229,10 +229,10 @@ export default function Contact() {
                   Email
                 </div>
                 <a
-                  href="mailto:hello@vvhaglobal.com"
+                  href="mailto:info@vvhaglobal.com"
                   className="text-xl md:text-2xl font-light hover:text-red-600 transition-colors"
                 >
-                  hello@vvhaglobal.com
+                  info@vvhaglobal.com
                 </a>
               </div>
               <div>
@@ -240,10 +240,10 @@ export default function Contact() {
                   Phone
                 </div>
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+917731913335"
                   className="text-xl md:text-2xl font-light hover:text-red-600 transition-colors"
                 >
-                  +1 (234) 567-8900
+                  +91 77319 13335
                 </a>
               </div>
             </motion.div>

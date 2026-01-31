@@ -1,12 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function Navigation() {
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -14,7 +16,7 @@ export default function Navigation() {
     { name: "Capabilities", path: "/capabilities" },
     { name: "How We Build", path: "/how-we-build" },
     { name: "Work & Impact", path: "/work" },
-    { name: "Start a Conversation", path: "/contact" },
+    { name: "Contact", path: "/contact" },
   ];
 
   return (
@@ -40,8 +42,9 @@ export default function Navigation() {
             />
           </motion.div>
         </Link>
+        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          {navItems.slice(1, -1).map((item) => (
+          {navItems.slice(1).map((item) => (
             <Link key={item.path} href={item.path}>
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -55,28 +58,69 @@ export default function Navigation() {
               </motion.div>
             </Link>
           ))}
-          <Link href="/contact">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className={`text-sm font-medium cursor-pointer transition-colors ${
-                pathname === "/contact"
-                  ? "text-black font-semibold"
-                  : "text-gray-600 hover:text-black"
-              }`}
-            >
-              Contact
-            </motion.div>
-          </Link>
         </div>
+
+        {/* Mobile Navigation */}
         <div className="md:hidden">
-          <Link href="/contact">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="text-sm font-medium cursor-pointer"
-            >
-              Contact
-            </motion.div>
-          </Link>
+          <motion.button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2"
+            whileTap={{ scale: 0.95 }}
+          >
+            <div className="flex flex-col gap-1.5 w-6">
+              <motion.span
+                animate={{
+                  rotate: isMobileMenuOpen ? 45 : 0,
+                  y: isMobileMenuOpen ? 8 : 0,
+                }}
+                className="h-0.5 bg-black w-full origin-center"
+              />
+              <motion.span
+                animate={{ opacity: isMobileMenuOpen ? 0 : 1 }}
+                className="h-0.5 bg-black w-full"
+              />
+              <motion.span
+                animate={{
+                  rotate: isMobileMenuOpen ? -45 : 0,
+                  y: isMobileMenuOpen ? -8 : 0,
+                }}
+                className="h-0.5 bg-black w-full origin-center"
+              />
+            </div>
+          </motion.button>
+
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-full left-0 right-0 bg-white border-b border-black/5 shadow-lg"
+              >
+                <div className="px-6 py-4 space-y-4">
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      href={item.path}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <motion.div
+                        whileTap={{ scale: 0.95 }}
+                        className={`text-base font-medium py-2 transition-colors ${
+                          pathname === item.path
+                            ? "text-black font-semibold"
+                            : "text-gray-600"
+                        }`}
+                      >
+                        {item.name}
+                      </motion.div>
+                    </Link>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </motion.nav>
