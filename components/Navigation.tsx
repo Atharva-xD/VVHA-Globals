@@ -39,6 +39,7 @@ export default function Navigation() {
               height={40}
               className="h-8 md:h-10 w-auto"
               priority
+              fetchPriority="high"
             />
           </motion.div>
         </Link>

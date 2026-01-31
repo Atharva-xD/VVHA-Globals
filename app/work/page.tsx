@@ -5,6 +5,7 @@ import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import ScrollReveal from "@/components/ScrollReveal";
 import Footer from "@/components/Footer";
+import { AuthorityHeadline, PhilosophyHeadline } from "@/components/HeadlineSystems";
 
 const caseStudies = [
   {
@@ -130,33 +131,68 @@ export default function Work() {
       <section className="min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-24 pt-20 md:pt-0">
         <div className="max-w-6xl mx-auto w-full">
           <ScrollReveal>
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.95] text-black mb-8"
-            >
-              Work & Impact
-            </motion.h1>
+            <AuthorityHeadline className="mb-8">
+              Our Work
+            </AuthorityHeadline>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl md:text-2xl lg:text-3xl leading-relaxed text-gray-600 font-light max-w-3xl"
             >
-              Every project starts with understanding the problem. Then we think
-              deeply about the solution. The outcome speaks for itself.
+              We deliver scalable digital solutions across industries.
             </motion.p>
           </ScrollReveal>
         </div>
       </section>
 
+      {/* Project Types */}
+      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <ScrollReveal>
+            <PhilosophyHeadline size="large" className="mb-12">
+              Project Types
+            </PhilosophyHeadline>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            {[
+              "Custom Web Applications",
+              "Mobile Applications",
+              "Enterprise Software",
+              "Digital Marketing Campaigns",
+            ].map((type, index) => (
+              <ScrollReveal key={type} delay={index * 0.1}>
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="flex items-start gap-4"
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-red-600 mt-3 flex-shrink-0" />
+                  <p className="text-lg md:text-xl leading-relaxed text-gray-700 font-light">
+                    {type}
+                  </p>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Case studies */}
-      <section className="py-12 md:py-24 px-6 md:px-12 lg:px-24 bg-white">
-        <div className="max-w-6xl mx-auto space-y-6 md:space-y-8">
-          {caseStudies.map((caseStudy, index) => (
-            <CaseStudyCard key={caseStudy.title} caseStudy={caseStudy} index={index} />
-          ))}
+      <section className="py-12 md:py-24 px-6 md:px-12 lg:px-24 bg-white border-t border-black/5">
+        <div className="max-w-6xl mx-auto">
+          <ScrollReveal>
+            <PhilosophyHeadline size="large" className="mb-12">
+              Project Case Studies
+            </PhilosophyHeadline>
+          </ScrollReveal>
+          <div className="space-y-6 md:space-y-8 mt-12">
+            {caseStudies.map((caseStudy, index) => (
+              <CaseStudyCard key={caseStudy.title} caseStudy={caseStudy} index={index} />
+            ))}
+          </div>
         </div>
       </section>
 

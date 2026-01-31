@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "VVHA Global | Enterprise Digital Solutions",
-  description: "We help you go online and scale your business through innovative digital solutions.",
+  title: "VVHA Global",
+  description: "VVHA Global is a leading digital solutions company offering web development, mobile app development, UI/UX design, IT consulting & digital marketing services for startups and enterprises worldwide.",
+  icons: {
+    icon: [
+      { url: "/images/logo.png", type: "image/png" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+    apple: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -13,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="antialiased bg-white text-black overflow-x-hidden">
+      <body className="antialiased bg-white text-black overflow-x-hidden" suppressHydrationWarning>
         {children}
       </body>
     </html>

@@ -5,6 +5,7 @@ import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import ScrollReveal from "@/components/ScrollReveal";
 import Footer from "@/components/Footer";
+import { AuthorityHeadline, PhilosophyHeadline } from "@/components/HeadlineSystems";
 
 const capabilities = [
   {
@@ -76,8 +77,8 @@ const capabilities = [
     ],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="3" />
-        <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24" />
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
       </svg>
     ),
   },
@@ -140,42 +141,40 @@ function CapabilityBlock({
         <motion.button
           onClick={() => setIsExpanded(!isExpanded)}
           whileHover={{ x: 10 }}
-          className="w-full py-12 md:py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-left group"
+          className="w-full py-8 md:py-12 lg:py-16 flex flex-row items-center justify-between gap-4 md:gap-6 text-left group"
         >
-          <div className="flex-1">
-            <div className="flex items-start gap-6 mb-4">
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="text-red-600 w-12 h-12 md:w-16 md:h-16 flex-shrink-0"
-              >
-                {capability.icon}
-              </motion.div>
-              <div className="flex-1">
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 tracking-tight">
-                  {capability.title}
-                </h3>
-                <p className="text-lg md:text-xl text-gray-600 font-light">
-                  {capability.tagline}
-                </p>
-              </div>
-            </div>
-            <motion.p
-              initial={{ opacity: 0, height: 0 }}
-              animate={{
-                opacity: isExpanded ? 1 : 0,
-                height: isExpanded ? "auto" : 0,
-              }}
-              className="text-base md:text-lg leading-relaxed text-gray-700 font-light mt-4 overflow-hidden"
+          <div className="flex-1 w-full md:w-auto flex items-start gap-4 md:gap-6">
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              className="text-red-600 w-10 h-10 md:w-16 md:h-16 flex-shrink-0 mt-1"
             >
-              {capability.description}
-            </motion.p>
+              {capability.icon}
+            </motion.div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-1 md:mb-2 tracking-tight leading-tight">
+                {capability.title}
+              </h3>
+              <p className="text-base md:text-lg lg:text-xl text-gray-600 font-light leading-relaxed">
+                {capability.tagline}
+              </p>
+              <motion.p
+                initial={{ opacity: 0, height: 0 }}
+                animate={{
+                  opacity: isExpanded ? 1 : 0,
+                  height: isExpanded ? "auto" : 0,
+                }}
+                className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-700 font-light mt-3 md:mt-4 overflow-hidden"
+              >
+                {capability.description}
+              </motion.p>
+            </div>
           </div>
           <motion.div
             animate={{ rotate: isExpanded ? 45 : 0 }}
             transition={{ duration: 0.3 }}
-            className="w-8 h-8 md:w-12 md:h-12 border-2 border-black rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-black group-hover:text-white transition-colors"
+            className="w-10 h-10 md:w-12 md:h-12 border-2 border-black rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-black group-hover:text-white transition-colors"
           >
-            <span className="text-2xl md:text-3xl font-light">+</span>
+            <span className="text-xl md:text-2xl lg:text-3xl font-light">+</span>
           </motion.div>
         </motion.button>
 
@@ -188,8 +187,8 @@ function CapabilityBlock({
           transition={{ duration: 0.4 }}
           className="overflow-hidden"
         >
-          <div className="pb-12 md:pb-16 pl-0 md:pl-24">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="pb-8 md:pb-12 lg:pb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 pl-[56px] md:pl-24">
               {capability.details.map((detail, idx) => (
                 <motion.div
                   key={idx}
@@ -199,10 +198,10 @@ function CapabilityBlock({
                     x: isExpanded ? 0 : -20,
                   }}
                   transition={{ delay: idx * 0.1 }}
-                  className="flex items-start gap-3"
+                  className="flex items-start gap-2 md:gap-3"
                 >
                   <div className="w-1.5 h-1.5 rounded-full bg-red-600 mt-2 flex-shrink-0" />
-                  <p className="text-sm md:text-base text-gray-600 font-light">
+                  <p className="text-sm md:text-base text-gray-600 font-light leading-relaxed">
                     {detail}
                   </p>
                 </motion.div>
@@ -224,14 +223,9 @@ export default function Capabilities() {
       <section className="min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-24 pt-20 md:pt-0">
         <div className="max-w-6xl mx-auto w-full">
           <ScrollReveal>
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.95] text-black mb-8"
-            >
+            <AuthorityHeadline className="mb-8">
               Capabilities
-            </motion.h1>
+            </AuthorityHeadline>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

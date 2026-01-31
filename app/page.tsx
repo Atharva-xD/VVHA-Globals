@@ -6,23 +6,17 @@ import ScrollReveal from "@/components/ScrollReveal";
 import KineticText from "@/components/KineticText";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import {
+  AuthorityHeadline,
+  PhilosophyHeadline,
+  InvitationHeadline,
+} from "@/components/HeadlineSystems";
 
 const services = [
   {
-    title: "Mobile Applications",
-    description:
-      "Fast & User friendly applications with swift UI. We develop Customized mobile applications based on your requirements.",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="5" y="2" width="14" height="20" rx="2" />
-        <line x1="12" y1="18" x2="12.01" y2="18" />
-      </svg>
-    ),
-  },
-  {
     title: "Web Design & Development",
     description:
-      "Responsive, Professional & Dynamic websites. Web-portals, Cloud-based POS, Inventory Systems.",
+      "High-performance, SEO-friendly websites, web applications, dashboards, and cloud-based platforms.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="3" width="20" height="14" rx="2" />
@@ -33,9 +27,20 @@ const services = [
     ),
   },
   {
-    title: "UI / UX",
+    title: "Mobile App Development",
     description:
-      "We design modern & interactive User-Interfaces for web & mobile products.",
+      "Android, iOS, and cross-platform mobile applications built for scalability and performance.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="5" y="2" width="14" height="20" rx="2" />
+        <line x1="12" y1="18" x2="12.01" y2="18" />
+      </svg>
+    ),
+  },
+  {
+    title: "UI / UX Design",
+    description:
+      "User-centric interface design, wireframes, prototypes, and design systems.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" strokeDasharray="2 2" />
@@ -44,34 +49,23 @@ const services = [
     ),
   },
   {
-    title: "Technology Consulting",
+    title: "IT Consulting",
     description:
-      "Our Experts guide you on how to best use technology and software to benefit your business.",
+      "Technology strategy, digital transformation, architecture planning, and system integration.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="3" />
-        <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24" />
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
       </svg>
     ),
   },
   {
     title: "Digital Marketing",
     description:
-      "Our design services starts and ends with a best-in-class experience strategy that builds brands.",
+      "SEO, social media marketing, Google Ads, branding, and performance marketing.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 11l19-9-9 19-2-8-8-2z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Help & Support",
-    description: "We provide round the clock support to all our clients.",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-        <path d="M13 8a3 3 0 1 0 0 6" />
-        <path d="M13 11h.01" />
       </svg>
     ),
   },
@@ -85,46 +79,50 @@ export default function Home() {
       {/* Split Screen Opening Section */}
       <section className="min-h-screen flex flex-col md:flex-row relative pt-20 md:pt-0">
         {/* Left Side - Large Typography */}
-        <div className="flex-1 flex items-center justify-center p-6 md:p-12 lg:p-24 bg-white border-r-0 md:border-r border-black/5">
+        <div className="flex-1 flex items-center justify-start md:justify-center p-6 md:p-12 lg:p-24 bg-white border-r-0 md:border-r border-black/5">
           <ScrollReveal delay={0.2}>
-            <div className="space-y-6 md:space-y-8 max-w-2xl">
-              <motion.h1
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-black tracking-[-0.02em] leading-[0.95] text-black"
-              >
-                We help you
+            <div className="space-y-4 md:space-y-6 lg:space-y-8 max-w-2xl w-full">
+              <AuthorityHeadline delay={0.3}>
+                Building
                 <br />
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                  className="text-red-600"
-                >
-                  to go online
-                </motion.span>
+                Scalable
                 <br />
-                and scale your
+                <span className="text-red-600">Digital Solutions</span>
                 <br />
-                business.
-              </motion.h1>
+                for a Connected
+                <br />
+                World.
+              </AuthorityHeadline>
             </div>
           </ScrollReveal>
         </div>
 
         {/* Right Side - Descriptive Text */}
-        <div className="flex-1 flex items-center justify-center p-6 md:p-12 lg:p-24 bg-black text-white">
+        <div className="flex-1 flex items-center justify-start md:justify-center p-6 md:p-12 lg:p-24 bg-black text-white">
           <ScrollReveal delay={0.4} direction="left">
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="text-lg md:text-xl lg:text-2xl leading-relaxed font-light max-w-lg"
+              className="space-y-4 md:space-y-6 max-w-lg w-full"
             >
-              At VVHA Global, we design and develop solutions that are
-              best-in-class and tailor-made digital solutions.
-            </motion.p>
+              <p className="text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed font-light">
+                We help startups, SMEs, and enterprises transform ideas into high-performing digital products.
+              </p>
+              <p className="text-sm md:text-base lg:text-lg text-white/70 font-light">
+                From concept to launch — we build technology that grows your business.
+              </p>
+              <div className="flex flex-wrap gap-3 md:gap-4 pt-2 md:pt-4">
+                <span className="text-xs md:text-sm lg:text-base text-red-600 font-light">•</span>
+                <span className="text-xs md:text-sm lg:text-base text-white/60 font-light">Web</span>
+                <span className="text-xs md:text-sm lg:text-base text-red-600 font-light">•</span>
+                <span className="text-xs md:text-sm lg:text-base text-white/60 font-light">Mobile</span>
+                <span className="text-xs md:text-sm lg:text-base text-red-600 font-light">•</span>
+                <span className="text-xs md:text-sm lg:text-base text-white/60 font-light">Cloud</span>
+                <span className="text-xs md:text-sm lg:text-base text-red-600 font-light">•</span>
+                <span className="text-xs md:text-sm lg:text-base text-white/60 font-light">Growth</span>
+              </div>
+            </motion.div>
           </ScrollReveal>
         </div>
       </section>
@@ -145,8 +143,8 @@ export default function Home() {
 
           {/* Second row with offset */}
           <ScrollReveal delay={0.2}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 md:mt-24">
-              {services.slice(3, 6).map((service, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 md:mt-24 max-w-4xl mx-auto">
+              {services.slice(3, 5).map((service, index) => (
                 <ServiceCard
                   key={service.title}
                   {...service}
@@ -158,57 +156,110 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Large Kinetic Text Section */}
-      <section className="min-h-[60vh] flex items-center justify-center px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
-        <div className="text-center w-full">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-black/5 select-none mb-8"
-          >
-            INNOVATION
-          </motion.h2>
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "100%" }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.3 }}
-            className="h-0.5 bg-red-600 mx-auto max-w-md"
-          />
+      {/* About Snapshot */}
+      <section className="pb-24 md:pb-32 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
+        <div className="max-w-5xl mx-auto">
+          <ScrollReveal>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="relative"
+            >
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-600" />
+              <div className="pl-4 md:pl-12">
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-light text-gray-800"
+                >
+                  VVHA Global is a technology-driven digital solutions provider helping businesses{" "}
+                  <span className="font-semibold text-black">establish, scale, and optimize</span>{" "}
+                  their digital presence through modern, scalable, and secure digital platforms.
+                </motion.p>
+              </div>
+            </motion.div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Progressive Reveal Section */}
+      {/* Why Choose VVHA Global */}
       <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-black text-white">
-        <div className="max-w-4xl mx-auto space-y-16 md:space-y-24">
+        <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <motion.h2
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
-            >
-              Enterprise-grade solutions
+            <PhilosophyHeadline size="large" className="mb-16 md:mb-24 text-center">
+              Why Choose
               <br />
-              <span className="text-red-600">without the corporate feel.</span>
-            </motion.h2>
+              <span className="text-red-600">VVHA Global</span>
+            </PhilosophyHeadline>
           </ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto">
+            {[
+              "Experienced technology professionals",
+              "Agile and transparent development",
+              "Scalable & secure solutions",
+              "Long-term support and partnership",
+            ].map((item, index) => (
+              <ScrollReveal key={item} delay={index * 0.1}>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="flex items-center gap-3"
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-red-600 flex-shrink-0" />
+                  <p className="text-lg md:text-xl leading-relaxed text-white/80 font-light">
+                    {item}
+                  </p>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <ScrollReveal delay={0.2}>
+      {/* CTA Section */}
+      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <ScrollReveal>
+            <InvitationHeadline size="medium" className="mb-8 text-black">
+              Ready to Build
+              <br />
+              <span className="text-red-600">Your Digital</span>
+              <br />
+              Product?
+            </InvitationHeadline>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-lg md:text-xl lg:text-2xl leading-relaxed text-white/80 font-light"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-lg md:text-xl leading-relaxed text-gray-700 font-light mb-12 max-w-2xl mx-auto"
             >
-              We believe in the power of thoughtful design and strategic
-              technology. Every project is an opportunity to push boundaries,
-              challenge conventions, and deliver experiences that resonate.
+              Contact VVHA Global today and transform your ideas into powerful digital solutions.
             </motion.p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.a
+                href="/contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-12 md:px-16 py-4 md:py-6 bg-red-600 hover:bg-red-700 text-white text-lg md:text-xl font-semibold tracking-tight inline-block transition-colors"
+              >
+                Get Free Consultation
+              </motion.a>
+              <motion.a
+                href="/contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-12 md:px-16 py-4 md:py-6 border-2 border-black text-black hover:bg-black hover:text-white text-lg md:text-xl font-semibold tracking-tight inline-block transition-colors"
+              >
+                Contact Us
+              </motion.a>
+            </div>
           </ScrollReveal>
         </div>
       </section>

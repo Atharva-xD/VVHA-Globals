@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import ScrollReveal from "@/components/ScrollReveal";
 import Footer from "@/components/Footer";
+import { PhilosophyHeadline } from "@/components/HeadlineSystems";
 
 const principles = [
   {
@@ -56,7 +57,7 @@ const phases = [
   {
     name: "Launch & Iterate",
     description: "Deploy, monitor, learn, and evolve based on real usage.",
-    overlap: null,
+    overlap: "→",
   },
 ];
 
@@ -93,42 +94,55 @@ export default function HowWeBuild() {
 
       {/* Principles section */}
       <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-white">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <ScrollReveal>
-            <motion.h2
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-16 md:mb-24 tracking-tight"
-            >
+            <PhilosophyHeadline size="large" className="mb-16 md:mb-24">
               Principles
-            </motion.h2>
+            </PhilosophyHeadline>
           </ScrollReveal>
 
-          <div className="space-y-16 md:space-y-24">
+          <div className="space-y-20 md:space-y-32">
             {principles.map((principle, index) => (
               <ScrollReveal key={principle.title} delay={index * 0.1}>
                 <motion.div
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-start"
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-12 items-start"
                 >
-                  <div className="md:col-span-1">
-                    <div className="inline-block mb-4">
-                      <span className="text-sm md:text-base font-medium text-red-600 uppercase tracking-wider">
+                  <div className="md:col-span-4 lg:col-span-5">
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
+                      className="mb-3 md:mb-4"
+                    >
+                      <span className="text-xs md:text-sm font-semibold text-red-600 uppercase tracking-[0.15em] letter-spacing-wider">
                         {principle.phase}
                       </span>
-                    </div>
-                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
+                    </motion.div>
+                    <motion.h3
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: index * 0.1 + 0.3 }}
+                      className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] text-black"
+                    >
                       {principle.title}
-                    </h3>
+                    </motion.h3>
                   </div>
-                  <div className="md:col-span-2">
-                    <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-700 font-light">
+                  <div className="md:col-span-8 lg:col-span-7 flex items-start">
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: index * 0.1 + 0.4 }}
+                      className="text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed text-gray-700 font-light max-w-2xl"
+                    >
                       {principle.description}
-                    </p>
+                    </motion.p>
                   </div>
                 </motion.div>
               </ScrollReveal>
@@ -141,14 +155,9 @@ export default function HowWeBuild() {
       <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-black text-white">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <motion.h2
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-16 md:mb-24 tracking-tight"
-            >
+            <PhilosophyHeadline size="large" className="mb-16 md:mb-24 text-white">
               Phases That Overlap
-            </motion.h2>
+            </PhilosophyHeadline>
           </ScrollReveal>
 
           <div className="space-y-8 md:space-y-12">
@@ -159,7 +168,7 @@ export default function HowWeBuild() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12"
+                  className="flex flex-row items-center justify-between gap-6 md:gap-12"
                 >
                   <div className="flex-1">
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
@@ -175,7 +184,7 @@ export default function HowWeBuild() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
-                      className="text-3xl md:text-4xl lg:text-5xl text-red-600 font-light"
+                      className="text-3xl md:text-4xl lg:text-5xl text-red-600 font-light flex-shrink-0"
                     >
                       {phase.overlap}
                     </motion.div>
