@@ -33,7 +33,7 @@ export default function Navigation() {
             className="cursor-pointer flex items-center"
           >
             <Image
-              src="/images/logo.png"
+              src="/images/logo.jpeg"
               alt="VVHA Global"
               width={120}
               height={40}

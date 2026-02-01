@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description: "VVHA Global is a leading digital solutions company offering web development, mobile app development, UI/UX design, IT consulting & digital marketing services for startups and enterprises worldwide.",
   icons: {
     icon: [
-      { url: "/images/logo.png", type: "image/png" },
+      { url: "/images/logo.jpeg", type: "image/jpeg" },
       { url: "/favicon.ico", type: "image/x-icon" },
     ],
-    apple: "/images/logo.png",
+    apple: "/images/logo.jpeg",
   },
 };
 

@@ -272,10 +272,10 @@ export default function Contact() {
                   Email
                 </div>
                 <a
-                  href="mailto:contact@vvhaglobal.com"
+                  href="mailto:info@vvhaglobal.com"
                   className="text-xl md:text-2xl font-light hover:text-red-600 transition-colors"
                 >
-                  contact@vvhaglobal.com
+                  info@vvhaglobal.com
                 </a>
               </div>
               <div>

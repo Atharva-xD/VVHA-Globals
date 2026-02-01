@@ -79,10 +79,10 @@ export default function Footer() {
                 className="pt-4"
               >
                 <a
-                  href="mailto:contact@vvhaglobal.com"
+                  href="mailto:info@vvhaglobal.com"
                   className="group inline-flex items-center gap-3 text-lg md:text-xl font-light text-gray-700 hover:text-black transition-colors"
                 >
-                  <span>contact@vvhaglobal.com</span>
+                  <span>info@vvhaglobal.com</span>
                   <motion.div
                     className="opacity-0 group-hover:opacity-100 transition-opacity"
                     initial={{ x: -4 }}
