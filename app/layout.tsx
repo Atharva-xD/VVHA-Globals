@@ -16,10 +16,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/images/logo.png", type: "image/png" },
-      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/images/logo.png", type: "image/png", sizes: "any" },
     ],
-    apple: "/images/logo.png",
+    apple: [
+      { url: "/images/logo.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   openGraph: {
     type: "website",
