@@ -47,10 +47,10 @@ export default function PrivacyPolicy() {
                 <p className="text-lg md:text-xl leading-relaxed text-gray-800 font-light">
                   VVHA Global (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;) respects your privacy and is committed to protecting the personal information you share with us through our website{" "}
                   <a
-                    href="https://vvha-globals.vercel.app"
+                    href="https://www.vvhaglobal.com"
                     className="text-red-600 hover:text-red-700 underline"
                   >
-                    https://vvha-globals.vercel.app
+                    https://www.vvhaglobal.com
                   </a>
                   .
                 </p>

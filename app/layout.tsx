@@ -24,12 +24,12 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://vvha-globals.vercel.app/",
+    url: "https://www.vvhaglobal.com/",
     title: "VVHA Global | Master Global Operations. Scale Without Friction.",
     description: "We build the infrastructure that closes deals. High-impact sales development and project management for international markets.",
     images: [
       {
-        url: "https://vvha-globals.vercel.app/images/logo.png",
+        url: "https://www.vvhaglobal.com/images/logo.png",
         width: 1200,
         height: 630,
         alt: "VVHA Global Logo",
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VVHA Global | Global Project Solutions & Sales Strategy",
     description: "Drive global traffic and close high-value leads with data-driven project management.",
-    images: ["https://vvha-globals.vercel.app/images/logo.png"],
+    images: ["https://www.vvhaglobal.com/images/logo.png"],
   },
-  metadataBase: new URL("https://vvha-globals.vercel.app"),
+  metadataBase: new URL("https://www.vvhaglobal.com"),
 };
 
 export const viewport = {
