@@ -2,15 +2,51 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "VVHA Global",
-  description: "VVHA Global is a leading digital solutions company offering web development, mobile app development, UI/UX design, IT consulting & digital marketing services for startups and enterprises worldwide.",
+  title: "VVHA Global | Expert Operations & Sales Strategy for Global Growth",
+  description: "Scale your business globally with VVHA Global. We specialize in tech-enabled project management, offshore development, and sales-closing lead generation.",
+  keywords: [
+    "Global Business Operations",
+    "International Project Management",
+    "B2B Lead Generation",
+    "Scalable Revenue Ops",
+    "Offshore Sales Development",
+  ],
+  other: {
+    "meta:title": "VVHA Global | Expert Operations & Sales Strategy for Global Growth",
+  },
   icons: {
     icon: [
-      { url: "/images/logo.jpeg", type: "image/jpeg" },
+      { url: "/images/logo.png", type: "image/png" },
       { url: "/favicon.ico", type: "image/x-icon" },
     ],
-    apple: "/images/logo.jpeg",
+    apple: "/images/logo.png",
   },
+  openGraph: {
+    type: "website",
+    url: "https://vvha-globals.vercel.app/",
+    title: "VVHA Global | Master Global Operations. Scale Without Friction.",
+    description: "We build the infrastructure that closes deals. High-impact sales development and project management for international markets.",
+    images: [
+      {
+        url: "https://vvha-globals.vercel.app/images/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "VVHA Global Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "VVHA Global | Global Project Solutions & Sales Strategy",
+    description: "Drive global traffic and close high-value leads with data-driven project management.",
+    images: ["https://vvha-globals.vercel.app/images/logo.png"],
+  },
+  metadataBase: new URL("https://vvha-globals.vercel.app"),
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

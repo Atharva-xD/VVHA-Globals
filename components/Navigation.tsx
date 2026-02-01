@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import logoImage from "@/assests/images/logo.png";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -33,11 +34,12 @@ export default function Navigation() {
             className="cursor-pointer flex items-center"
           >
             <Image
-              src="/images/logo.jpeg"
+              src={logoImage}
               alt="VVHA Global"
               width={120}
               height={40}
               className="h-8 md:h-10 w-auto"
+              style={{ width: "auto", height: "auto" }}
               priority
               fetchPriority="high"
             />
