@@ -1,11 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform, animate } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import Navigation from "@/components/Navigation";
 import ScrollReveal from "@/components/ScrollReveal";
 import Footer from "@/components/Footer";
 import { AuthorityHeadline, PhilosophyHeadline, InvitationHeadline } from "@/components/HeadlineSystems";
+import ThreeDBackground from "@/components/ThreeDBackground";
 import Link from "next/link";
 
 const values = [
@@ -30,6 +31,222 @@ const values = [
       "Your success is our success. We're invested in your long-term growth, not just project completion.",
   },
 ];
+
+
+// Impact Section Component
+function ImpactSection() {
+  const [hoveredStepIndex, setHoveredStepIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const steps = [
+    {
+      number: "01",
+      title: "Discover",
+      description: "We begin by understanding your business goals, constraints, and context. Through careful listening and strategic inquiry, we uncover core challenges and opportunities.",
+    },
+    {
+      number: "02",
+      title: "Design & Build",
+      description: "We craft scalable, intentional digital solutions that balance innovation with practicality. Every design decision is made with your long-term success in mind.",
+    },
+    {
+      number: "03",
+      title: "Scale & Optimize",
+      description: "We focus on long-term growth through continuous iteration and performance optimization. Our solutions evolve with your business, ensuring sustained impact.",
+    },
+  ];
+
+
+  return (
+    <section 
+      ref={sectionRef}
+      className="py-16 md:py-24 lg:py-32 px-6 md:px-12 lg:px-24 bg-white relative overflow-visible"
+    >
+      {/* 3D Background */}
+      <ThreeDBackground isMobile={isMobile} />
+      
+      <div className="max-w-6xl lg:max-w-7xl xl:max-w-[1400px] mx-auto relative z-20">
+        <ScrollReveal>
+          <PhilosophyHeadline size="large" className="mb-16 md:mb-16 lg:mb-20 text-center">
+            How We Create Impact
+          </PhilosophyHeadline>
+        </ScrollReveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 lg:gap-24 xl:gap-28 relative">
+          {/* Subtle vertical dividers - positioned between columns */}
+          <div 
+            className="hidden md:block absolute top-0 bottom-0 w-px bg-gray-200/50" 
+            style={{ 
+              left: 'calc(33.333% - 1.5rem)',
+            }} 
+          />
+          <div 
+            className="hidden md:block absolute top-0 bottom-0 w-px bg-gray-200/50" 
+            style={{ 
+              left: 'calc(66.666% + 2rem)',
+            }} 
+          />
+          
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.number}
+              ref={(el) => {
+                stepRefs.current[index] = el;
+              }}
+              className={`relative w-full ${
+                index === 0 
+                  ? 'mt-4 md:mt-0' 
+                  : index === 1 
+                    ? 'mt-0 md:mt-12' 
+                    : 'mt-0 md:mt-24'
+              }`}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                duration: 0.8, 
+                delay: index * 0.15, 
+                ease: [0.25, 0.1, 0.25, 1] 
+              }}
+            >
+              <StepItem
+                step={step}
+                index={index}
+                onHover={() => setHoveredStepIndex(index)}
+                onLeave={() => setHoveredStepIndex(null)}
+              />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Step Item Component
+function StepItem({ 
+  step, 
+  index, 
+  onHover,
+  onLeave 
+}: { 
+  step: { number: string; title: string; description: string }; 
+  index: number;
+  onHover: () => void;
+  onLeave: () => void;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const itemRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const handleMouseEnter = () => {
+    if (!isMobile) {
+      setIsHovered(true);
+      onHover();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile) {
+      setIsHovered(false);
+      onLeave();
+    }
+  };
+
+  return (
+    <motion.div
+      ref={itemRef}
+      initial={{ opacity: 0, y: isMobile ? 20 : 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ 
+        duration: isMobile ? 0.6 : 0.8, 
+        delay: index * (isMobile ? 0.1 : 0.2), 
+        ease: [0.25, 0.1, 0.25, 1] 
+      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={`relative min-h-[250px] md:min-h-[400px] ${index === 2 ? 'mb-6 md:mb-0' : 'mb-12 md:mb-0'}`}
+    >
+      {/* Background Number - Staircase Effect */}
+      <div className="absolute left-0 md:left-0 -top-12 md:top-0 pointer-events-none">
+        <motion.span
+          className="text-[80px] md:text-[160px] lg:text-[220px] xl:text-[280px] font-black text-gray-300 select-none leading-none block"
+          style={{
+            lineHeight: '0.75',
+            opacity: isHovered && !isMobile ? 0.4 : isMobile ? 0.3 : 0.35,
+            letterSpacing: '-0.02em',
+          }}
+          animate={{
+            opacity: isHovered && !isMobile ? 0.4 : isMobile ? 0.3 : 0.35,
+            scale: isHovered && !isMobile ? 1.02 : 1,
+          }}
+          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          {step.number}
+        </motion.span>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-20 pt-6 md:pt-16 w-full pl-0 md:pl-0">
+        <motion.div
+          className="mb-6 md:mb-8"
+          animate={{
+            x: isHovered && !isMobile ? 4 : 0,
+          }}
+          transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <motion.h3
+            className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black leading-tight tracking-tight mb-2"
+            style={{
+              textShadow: isHovered && !isMobile ? '0 0 0 rgba(0,0,0,0.05)' : 'none',
+            }}
+          >
+            {step.title}
+          </motion.h3>
+          {/* Subtle accent line on hover */}
+          <motion.div
+            className="h-0.5 bg-red-600 mt-2"
+            initial={{ width: 0 }}
+            animate={{
+              width: isHovered && !isMobile ? '50px' : '0',
+            }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+          />
+        </motion.div>
+        <motion.p
+          className="text-base md:text-lg leading-relaxed text-gray-700 md:text-gray-600 font-light"
+          animate={{
+            x: isHovered && !isMobile ? 2 : 0,
+          }}
+          transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          {step.description}
+        </motion.p>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Perspective() {
   const [selectedValues, setSelectedValues] = useState<string[]>(["Innovation", "Integrity"]);
@@ -126,6 +343,9 @@ export default function Perspective() {
         </div>
       </section>
 
+      {/* How We Create Impact */}
+      <ImpactSection />
+
       {/* Large typographic statement */}
       <section className="py-16 md:py-24 lg:py-32 px-6 md:px-12 lg:px-24 bg-white">
         <div className="max-w-5xl mx-auto">
@@ -199,7 +419,47 @@ export default function Perspective() {
           </div>
         </div>
       </section>
+      
 
+      {/* CTA Section */}
+      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <ScrollReveal>
+            <InvitationHeadline size="medium" className="mb-8">
+              Ready to build something
+              <br />
+              <span className="text-red-600">remarkable together?</span>
+            </InvitationHeadline>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-lg md:text-xl text-gray-700 font-light mb-12 max-w-2xl mx-auto"
+            >
+              Let&apos;s turn your vision into reality with thoughtful technology and fearless creativity. Reach out—we&apos;d love to hear from you.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <Link href="/contact">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-red-600 hover:bg-red-700 text-white font-semibold px-12 md:px-16 py-4 md:py-6 text-lg md:text-xl tracking-tight transition-colors"
+                >
+                  Get In Touch
+                </motion.button>
+              </Link>
+            </motion.div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      
       {/* Industries We Serve */}
       <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
@@ -279,44 +539,6 @@ export default function Perspective() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <ScrollReveal>
-            <InvitationHeadline size="medium" className="mb-8">
-              Ready to build something
-              <br />
-              <span className="text-red-600">remarkable together?</span>
-            </InvitationHeadline>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg md:text-xl text-gray-700 font-light mb-12 max-w-2xl mx-auto"
-            >
-              Let&apos;s turn your vision into reality with thoughtful technology and fearless creativity. Reach out—we&apos;d love to hear from you.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-red-600 hover:bg-red-700 text-white font-semibold px-12 md:px-16 py-4 md:py-6 text-lg md:text-xl tracking-tight transition-colors"
-                >
-                  Get In Touch
-                </motion.button>
-              </Link>
-            </motion.div>
-          </ScrollReveal>
         </div>
       </section>
 

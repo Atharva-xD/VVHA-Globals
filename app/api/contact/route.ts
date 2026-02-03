@@ -50,6 +50,14 @@ export async function POST(request: NextRequest) {
     const recipientEmail = process.env.RESEND_TO_EMAIL || process.env.RESEND_TEST_EMAIL || "info@vvhaglobal.com";
     const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
     
+    // Validate email addresses are defined
+    if (!recipientEmail || !fromEmail) {
+      return NextResponse.json(
+        { error: "Email service configuration error. Please contact the administrator." },
+        { status: 500 }
+      );
+    }
+    
     // Log the request (without sensitive data)
     console.log("Attempting to send email:", {
       to: recipientEmail,
